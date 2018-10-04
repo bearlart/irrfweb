@@ -1,0 +1,11 @@
+/ice/docker/ProjetoJava/IRRFWeb/src/main/java/br/com/irrfweb/model/Calculo.java
+/ice/docker/ProjetoJava/IRRFWeb/src/main/java/br/com/irrfweb/main/Main.java
+/ice/docker/ProjetoJava/IRRFWeb/src/main/java/br/com/irrfweb/action/impl/CalculoAction.java
+/ice/docker/ProjetoJava/IRRFWeb/src/main/java/br/com/irrfweb/action/impl/ErroAction.java
+/ice/docker/ProjetoJava/IRRFWeb/src/main/java/br/com/irrfweb/dao/CalculoDAO.java
+/ice/docker/ProjetoJava/IRRFWeb/src/main/java/br/com/irrfweb/action/impl/BaseCalculoAction.java
+/ice/docker/ProjetoJava/IRRFWeb/src/main/java/br/com/irrfweb/action/impl/DeducoesAction.java
+/ice/docker/ProjetoJava/IRRFWeb/src/main/java/br/com/irrfweb/action/impl/HomeAction.java
+/ice/docker/ProjetoJava/IRRFWeb/src/main/java/br/com/irrfweb/action/ICommand.java
+/ice/docker/ProjetoJava/IRRFWeb/src/main/java/br/com/irrfweb/controller/IRRFController.java
+/ice/docker/ProjetoJava/IRRFWeb/src/main/java/br/com/irrfweb/action/impl/ImpostoAction.java
