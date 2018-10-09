@@ -8,8 +8,10 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                env
                 sh 'mvn -B -DskipTests clean package'
                 sh 'cp /var/jenkins_home/workspace/IRRFWeb/target/IRRFWeb-1.0-SNAPSHOT.war /ice/docker'
+                
                 //sh 'cp tlt/target/tlt.war TOMCAT_DIRECTORY/webapps/'
                 //sh 'mvn -B'
                 //sh 'docker run hello-world'
