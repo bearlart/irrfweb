@@ -9,11 +9,14 @@ pipeline {
                 }
             }
             steps {
-                sh 'mvn -B -DskipTests clean package'
-                sh 'cp /var/jenkins_home/workspace/teste-onde-salva@2/target/IRRFWeb-1.0-SNAPSHOT.war maventarget/IRRFWeb-1.0-SNAPSHOT.war'
-                
+                sh 'mvn -B -DskipTests clean package'                
             }
             //stage 
+        }
+        stage ('Copy') {
+            steps {
+                sh 'cp /var/jenkins_home/workspace/teste-onde-salva@2/target/IRRFWeb-1.0-SNAPSHOT.war maventarget/IRRFWeb-1.0-SNAPSHOT.war'
+            }
         }
     }
 }
