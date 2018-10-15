@@ -5,12 +5,12 @@ pipeline {
             agent {
                 docker {
                     image 'maven:3-alpine'
-                    args '-v mavendb:/root/.m2 -v /ice/docker/ProjetoJava/IRRFWeb/target/:/ourtarget/'
+                    args '-v mavendb:/root/.m2 -v maventarget:/ice/docker/ProjetoJava/IRRFWeb/target/'
                 }
             }
             steps {
                 sh 'mvn -B -DskipTests clean package'
-                sh 'cp /var/jenkins_home/workspace/teste-onde-salva@2/target/IRRFWeb-1.0-SNAPSHOT.war ourtarget/IRRFWeb-1.0-SNAPSHOT.war'
+                sh 'cp /var/jenkins_home/workspace/teste-onde-salva@2/target/IRRFWeb-1.0-SNAPSHOT.war maventarget/IRRFWeb-1.0-SNAPSHOT.war'
                 
             }
             //stage 
