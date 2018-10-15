@@ -20,6 +20,7 @@ pipeline {
         }
         stage ('Deploy') {
             steps {
+                sh 'docker rm tomcat || true'
                 sh 'docker run --name tomcat -d  -p 9090:8080 -v maventarget:/usr/local/tomcat/webapps/ tomcat'
             }
         }
