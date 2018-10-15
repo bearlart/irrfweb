@@ -18,6 +18,11 @@ pipeline {
                 sh 'cp /var/jenkins_home/workspace/teste-onde-salva@2/target/IRRFWeb-1.0-SNAPSHOT.war /maventarget/IRRFWeb-1.0-SNAPSHOT.war'
             }
         }
+        stage ('Deploy') {
+            steps {
+                sh 'docker run --name tomcat -d  -p 9090:8080 -v maventarget:/usr/local/tomcat/webapps/ tomcat'
+            }
+        }
     }
 }
 
