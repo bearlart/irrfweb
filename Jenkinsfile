@@ -15,7 +15,7 @@ pipeline {
         }
         stage ('Copy') {
             steps {
-                sh 'cp /var/jenkins_home/workspace/teste-onde-salva@2/target/IRRFWeb-1.0-SNAPSHOT.war /ice/docker/IRRFWeb-1.0-SNAPSHOT.war'
+                sh 'cp /var/jenkins_home/workspace/teste-onde-salva@2/target/IRRFWeb-1.0-SNAPSHOT.war /maventarget/IRRFWeb-1.0-SNAPSHOT.war'
             }
         }
     }
