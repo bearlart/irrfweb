@@ -16,6 +16,7 @@ pipeline {
         //////////////////////////////////////////////////////
         stage ('Copy') {
             steps {
+                sh 'mkdir /mavendb/war/'
                 sh 'cp /var/jenkins_home/workspace/teste-onde-salva@2/target/IRRFWeb-1.0-SNAPSHOT.war /mavendb/war/ROOT.war'
             }
         }
