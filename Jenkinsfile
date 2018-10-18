@@ -25,7 +25,7 @@ pipeline {
             steps {
                 sh 'docker stop tomcat || true'
                 sh 'docker rm tomcat || true'
-                sh 'ls -la /mavendb/repository/br/com/irrfweb/IRRFWeb/1.0-SNAPSHOT'
+                sh 'ls -la /mavendb/war'
                 sh 'docker run --name tomcat -d  -p 9090:8080 -v /mavendb/war/:/usr/local/tomcat/webapps/ tomcat'
             }
         }
