@@ -14,25 +14,31 @@ pipeline {
             } 
         }
         //////////////////////////////////////////////////////
-        stage ('Copy') {
-            steps {
-                //sh 'mkdir /mavendb/war/ || true'
-                //sh 'cp /var/jenkins_home/workspace/teste-onde-salva@2/target/IRRFWeb-1.0-SNAPSHOT.war /mavendb/war/ROOT.war'
-                
-                sh 'cp /var/jenkins_home/workspace/teste-onde-salva@2/target/IRRFWeb-1.0-SNAPSHOT.war /maventarget/IRRFWeb-1.0-SNAPSHOT.war'
-            }
-        }
-        //////////////////////////////////////////////////////
         stage ('Deploy') {
             steps {
                 sh 'docker stop tomcat || true'
                 sh 'docker rm tomcat || true'
                 //sh 'ls -la /mavendb/war'
                 //sh 'docker run --name tomcat -d  -p 9090:8080 -v /mavendb/war/:/usr/local/tomcat/webapps/ tomcat'
-                
                 sh 'docker run --name tomcat -d  -p 9090:8080  tomcat'
+                
+                //sh 'ls -la /maventarget/'
+            }
+        }
+        //////////////////////////////////////////////////////
+        stage ('Copy') {
+            steps {
+                //sh 'mkdir /mavendb/war/ || true'
+                //sh 'cp /var/jenkins_home/workspace/teste-onde-salva@2/target/IRRFWeb-1.0-SNAPSHOT.war /mavendb/war/ROOT.war'
+                sh 'cp /var/jenkins_home/workspace/teste-onde-salva@2/target/IRRFWeb-1.0-SNAPSHOT.war /maventarget/IRRFWeb-1.0-SNAPSHOT.war'
                 sh 'docker cp /maventarget/IRRFWeb-1.0-SNAPSHOT.war tomcat:/usr/local/tomcat/webapps/irrf.war'
-                sh 'ls -la /maventarget/'
+            }
+        }
+        //////////////////////////////////////////////////////
+        stage ('Activate DB') {
+            steps {
+                sh 'docker start mysql2 || true'
+                sh 'docker network connect nrc-net tomcat || true'
             }
         }
         //////////////////////////////////////////////////////
