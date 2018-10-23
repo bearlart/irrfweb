@@ -14,14 +14,14 @@ pipeline {
             } 
         }
         //////////////////////////////////////////////////////
-        //stage ('Copy') {
-            //steps {
+        stage ('Copy') {
+            steps {
                 //sh 'mkdir /mavendb/war/ || true'
                 //sh 'cp /var/jenkins_home/workspace/teste-onde-salva@2/target/IRRFWeb-1.0-SNAPSHOT.war /mavendb/war/ROOT.war'
                 
                 sh 'cp /var/jenkins_home/workspace/teste-onde-salva@2/target/IRRFWeb-1.0-SNAPSHOT.war /maventarget/IRRFWeb-1.0-SNAPSHOT.war'
             //}
-        //}
+        }
         //////////////////////////////////////////////////////
         stage ('Deploy') {
             steps {
