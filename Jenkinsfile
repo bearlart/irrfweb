@@ -30,7 +30,8 @@ pipeline {
                 //sh 'ls -la /mavendb/war'
                 //sh 'docker run --name tomcat -d  -p 9090:8080 -v /mavendb/war/:/usr/local/tomcat/webapps/ tomcat'
                 
-                sh 'docker run --name tomcat -d  -p 9090:8080 -v /maventarget/IRRFWeb-1.0-SNAPSHOT.war:/usr/local/tomcat/webapps/irrf.war tomcat'
+                sh 'docker run --name tomcat -d  -p 9090:8080  tomcat'
+                sh 'docker cp /maventarget/IRRFWeb-1.0-SNAPSHOT.war tomcat:/usr/local/tomcat/webapps/irrf.war'
                 sh 'ls -la /maventarget/'
             }
         }
