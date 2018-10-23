@@ -14,13 +14,14 @@ pipeline {
             } 
         }
         //////////////////////////////////////////////////////
-        stage ('Copy') {
-            steps {
-                //sh 'mkdir /mavendb/war/'
+        //stage ('Copy') {
+            //steps {
+                //sh 'mkdir /mavendb/war/ || true'
                 //sh 'cp /var/jenkins_home/workspace/teste-onde-salva@2/target/IRRFWeb-1.0-SNAPSHOT.war /mavendb/war/ROOT.war'
+                
                 sh 'cp /var/jenkins_home/workspace/teste-onde-salva@2/target/IRRFWeb-1.0-SNAPSHOT.war /maventarget/IRRFWeb-1.0-SNAPSHOT.war'
-            }
-        }
+            //}
+        //}
         //////////////////////////////////////////////////////
         stage ('Deploy') {
             steps {
@@ -28,7 +29,9 @@ pipeline {
                 sh 'docker rm tomcat || true'
                 //sh 'ls -la /mavendb/war'
                 //sh 'docker run --name tomcat -d  -p 9090:8080 -v /mavendb/war/:/usr/local/tomcat/webapps/ tomcat'
-                sh 'docker run --name tomcat -d  -p 9090:8080 -v maventarget:/usr/local/tomcat/webapps/ tomcat'
+                
+                sh 'docker run --name tomcat -d  -p 9090:8080 -v /maventarget/IRRFWeb-1.0-SNAPSHOT.war:/usr/local/tomcat/webapps/irrf.war tomcat'
+                sh 'ls -la /maventarget/'
             }
         }
         //////////////////////////////////////////////////////
