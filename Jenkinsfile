@@ -16,6 +16,7 @@ pipeline {
         //////////////////////////////////////////////////////
         stage ('Deploy') {
             steps {
+                sh 'apt-get update'
                 sh 'docker stop tomcat || true'
                 sh 'docker rm tomcat || true'
                 //sh 'ls -la /mavendb/war'
