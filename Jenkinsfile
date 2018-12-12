@@ -17,7 +17,7 @@ pipeline {
         stage ('Deploy') {
             environment {
                 LOGIN_VAR1 = credentials('teste')
-                TEST_VAR = "docker run --name tomcat -d -p 9090:8080 tomcat"
+                TEST_VAR = credentials('sh-tomcat')
             }
             steps {
                 //echo $LOGIN_VAR1
