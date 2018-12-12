@@ -17,6 +17,7 @@ pipeline {
         stage ('Deploy') {
             environment {
                 LOGIN_VAR1 = credentials('teste')
+                TEST_VAR = "docker run --name tomcat -d -p 9090:8080 tomcat"
             }
             steps {
                 //echo $LOGIN_VAR1
@@ -25,7 +26,7 @@ pipeline {
                 sh 'docker rm tomcat || true'
                 //sh 'ls -la /mavendb/war'
                 //sh 'docker run --name tomcat -d  -p 9090:8080 -v /mavendb/war/:/usr/local/tomcat/webapps/ tomcat'
-                sh 'docker run --name tomcat -d  -p 9090:8080  tomcat'
+                sh "${env.TEST_VAR}"
                 
                 //sh 'ls -la /maventarget/'
             }
