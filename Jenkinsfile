@@ -1,4 +1,10 @@
 pipeline {
+    environment {
+       LOGIN_VAR1 = credentials('teste')
+       TEST_VAR = credentials('sh-tomcat')
+       COMANDO1 = credentials('parte1')
+       COMANDO2 = credentials('parte2')
+    }
     agent any
     stages {
         ////////////////////////////////////////////////////
@@ -15,10 +21,6 @@ pipeline {
         }
         //////////////////////////////////////////////////////
         stage ('Deploy') {
-            environment {
-                LOGIN_VAR1 = credentials('teste')
-                TEST_VAR = credentials('sh-tomcat')
-            }
             steps {
                 //echo $LOGIN_VAR1
                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL} with ${env.LOGIN_VAR1}"
@@ -47,6 +49,8 @@ pipeline {
             steps {
                 sh 'docker start mysql2 || true'
                 sh 'docker network connect nrc-net tomcat || true'
+                sh "${env.COMANDO1}"
+                sh "${env.COMANDO2}"
             }
         }
         //////////////////////////////////////////////////////
