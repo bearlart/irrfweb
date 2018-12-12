@@ -16,7 +16,7 @@ pipeline {
         //////////////////////////////////////////////////////
         stage ('Deploy') {
             environment {
-                LOGIN = credentials('logincreds')
+                LOGIN = credentials('sitio')
             }
             steps {
                 echo $LOGIN
