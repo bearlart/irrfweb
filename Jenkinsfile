@@ -19,7 +19,8 @@ pipeline {
                 LOGIN_VAR1 = credentials('teste')
             }
             steps {
-                echo $LOGIN_VAR1
+                //echo $LOGIN_VAR1
+                echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
                 sh 'docker stop tomcat || true'
                 sh 'docker rm tomcat || true'
                 //sh 'ls -la /mavendb/war'
