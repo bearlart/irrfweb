@@ -16,10 +16,10 @@ pipeline {
         //////////////////////////////////////////////////////
         stage ('Deploy') {
             environment {
-                LOGIN = credentials('sitio')
+                LOGIN_VAR1 = credentials('sitio')
             }
             steps {
-                echo $LOGIN
+                echo $LOGIN_VAR1
                 sh 'docker stop tomcat || true'
                 sh 'docker rm tomcat || true'
                 //sh 'ls -la /mavendb/war'
