@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    environment {
-        LOGIN = credentials('logincreds')
-    }
     stages {
         ////////////////////////////////////////////////////
         stage('Build') {
@@ -18,6 +15,9 @@ pipeline {
         }
         //////////////////////////////////////////////////////
         stage ('Deploy') {
+            environment {
+                LOGIN = credentials('logincreds')
+            }
             steps {
                 echo $LOGIN
                 sh 'docker stop tomcat || true'
