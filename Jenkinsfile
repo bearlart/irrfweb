@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment {
+        LOGIN = credentials('logincreds')
+    }
     stages {
         ////////////////////////////////////////////////////
         stage('Build') {
@@ -16,6 +19,7 @@ pipeline {
         //////////////////////////////////////////////////////
         stage ('Deploy') {
             steps {
+                echo $LOGIN
                 sh 'docker stop tomcat || true'
                 sh 'docker rm tomcat || true'
                 //sh 'ls -la /mavendb/war'
