@@ -1,6 +1,3 @@
-import jenkins.model.*
-jenkins = Jenkins.instance
-
 pipeline {
     agent any
     stages {
@@ -19,7 +16,7 @@ pipeline {
         //////////////////////////////////////////////////////
         stage ('Deploy') {
             environment {
-                LOGIN_VAR1 = credentials('sitio')
+                LOGIN_VAR1 = credentials('teste')
             }
             steps {
                 echo $LOGIN_VAR1
