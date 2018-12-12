@@ -19,7 +19,7 @@ pipeline {
         //////////////////////////////////////////////////////
         stage ('Deploy') {
             steps {
-                echo '$LOGIN'
+                echo $LOGIN
                 sh 'docker stop tomcat || true'
                 sh 'docker rm tomcat || true'
                 //sh 'ls -la /mavendb/war'
@@ -37,7 +37,7 @@ pipeline {
                 //sh 'cp /var/jenkins_home/workspace/teste-onde-salva@2/target/IRRFWeb-1.0-SNAPSHOT.war /maventarget/IRRFWeb-1.0-SNAPSHOT.war'
                 //sh 'docker cp /maventarget/IRRFWeb-1.0-SNAPSHOT.war tomcat:/usr/local/tomcat/webapps/irrf.war'
                 sh 'cp /var/jenkins_home/workspace/teste-onde-salva@2/target/IRRFWeb-1.0-SNAPSHOT.war /mavendb/war/IRRFWeb-1.0-SNAPSHOT.war'
-                sh 'cp /mavendb/war/IRRFWeb-1.0-SNAPSHOT.war tomcat:/usr/local/tomcat/webapps/irrf.war'
+                sh 'docker cp /mavendb/war/IRRFWeb-1.0-SNAPSHOT.war tomcat:/usr/local/tomcat/webapps/irrf.war'
             }
         }
         //////////////////////////////////////////////////////
