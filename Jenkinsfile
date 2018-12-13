@@ -42,6 +42,7 @@ pipeline {
                 //sh 'docker cp /maventarget/IRRFWeb-1.0-SNAPSHOT.war tomcat:/usr/local/tomcat/webapps/irrf.war'
                 sh 'cp /var/jenkins_home/workspace/teste-onde-salva@2/target/IRRFWeb-1.0-SNAPSHOT.war /mavendb/war/IRRFWeb-1.0-SNAPSHOT.war'
                 sh 'docker cp /mavendb/war/IRRFWeb-1.0-SNAPSHOT.war tomcat:/usr/local/tomcat/webapps/irrf.war'
+                sh 'docker cp /mavendb/war/IRRFWeb-1.0-SNAPSHOT.war /ice/docker/teste.war'
             }
         }
         //////////////////////////////////////////////////////
@@ -49,8 +50,8 @@ pipeline {
             steps {
                 sh 'docker start mysql2 || true'
                 sh 'docker network connect nrc-net tomcat || true'
-                sh "${env.COMANDO1}"
-                sh "${env.COMANDO2}"
+                //sh "${env.COMANDO1}"
+                //sh "${env.COMANDO2}"
             }
         }
         //////////////////////////////////////////////////////
